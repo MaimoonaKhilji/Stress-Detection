@@ -26,7 +26,26 @@ def stress_prediction(input_data):
 def main():
     st.title("Stress Prediction")
 
-    # Create a sidebar for notes or additional content
+   
+
+    st.sidebar.write("You can use Markdown syntax to format the content.")
+
+    # Main content on the left side
+    Gender = st.text_input("Gender (0 for Male, 1 for Female)")
+    Age = st.text_input("Age")
+    Bmi = st.text_input("BMI")
+    Temperature = st.text_input("Temperature")
+    Pulse_rate = st.text_input("Pulse rate")
+
+    if st.button("Stress Prediction"):
+        input_data = [Gender, Age, Temperature, Pulse_rate, Bmi]
+        prediction = stress_prediction(input_data)
+        prediction = int(prediction)
+        if prediction==1:
+            result="No Stress"
+        else:
+            result="Stress Detected"
+             # Create a sidebar for notes or additional content
     st.sidebar.markdown("### Practices to Relax Stress")
     st.sidebar.write("""
 - Deep Breathing: Practice deep breathing exercises to calm the nervous system and reduce stress levels. Take slow, deep breaths, hold briefly, and then exhale slowly.
@@ -63,26 +82,9 @@ def main():
 
 - Disconnect: Take a break from technology and social media to reduce mental clutter and promote relaxation.
 
-- Seek Professional Help: If stress becomes overwhelming or chronic, don't hesitate to seek support from a mental health professional or counselor.
+- **Seek Professional Help:** If stress becomes overwhelming or chronic, don't hesitate to seek support from a mental health professional or counselor.
 """)
-
-    st.sidebar.write("You can use Markdown syntax to format the content.")
-
-    # Main content on the left side
-    Gender = st.text_input("Gender (0 for Male, 1 for Female)")
-    Age = st.text_input("Age")
-    Bmi = st.text_input("BMI")
-    Temperature = st.text_input("Temperature")
-    Pulse_rate = st.text_input("Pulse rate")
-
-    if st.button("Stress Prediction"):
-        input_data = [Gender, Age, Temperature, Pulse_rate, Bmi]
-        prediction = stress_prediction(input_data)
-        prediction = int(prediction)
-        if prediction==1:
-            result="No Stress"
-        else:
-            result="Stress Detected"
+    
             st.write("Stress Detected! Playing Calm Sound...")
             calm_sound_path = 'Meydan-Freezing-but-warm.mp3'
             st.audio(calm_sound_path, format='audio/mp3')

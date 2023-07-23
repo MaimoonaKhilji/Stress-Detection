@@ -71,16 +71,13 @@ def main():
         time.sleep(2)
         entry = get()
         p = entry['field1']
-        p = float(p)
-        global Pulse_rate
-        Pulse_rate = p
+        Pulse_rate = float(p)
         t = entry['field2']
-        t = float(t)
-        global Temperature
-        Temperature = t
+        Temperature = float(t)
         st.write("Pulse Rate:", Pulse_rate)
         st.write("Temperature:", Temperature)
-        
+    st.write("Pulse Rate:", Pulse_rate)
+    st.write("Temperature:", Temperature)  
       
 
     if st.button("Stress Prediction"):

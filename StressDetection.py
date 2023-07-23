@@ -28,7 +28,7 @@ def main():
 
    
 
-    st.sidebar.write("You can use Markdown syntax to format the content.")
+  #  st.sidebar.write("You can use Markdown syntax to format the content.")
 
     # Main content on the left side
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")

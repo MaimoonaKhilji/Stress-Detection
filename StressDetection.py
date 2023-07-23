@@ -117,7 +117,7 @@ pickle.dump(keras_model, open(filename, 'wb'))
 
 loaded_model = pickle.load(open('trained_model.sav', 'rb'))
 
-!pip install streamlit
+#!pip install streamlit
 
 def stress_prediction(input_data):
 
@@ -157,5 +157,5 @@ def main():
 if __name__ == '__main__':
     main()
 
-!streamlit run /usr/local/lib/python3.10/dist-packages/ipykernel_launcher.py
+#!streamlit run /usr/local/lib/python3.10/dist-packages/ipykernel_launcher.py
 

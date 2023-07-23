@@ -75,10 +75,10 @@ def main():
         Temperature = entry['field2']
         #Temperature = float(Temperature)
     
-        # Show the retrieved data in the form
-        st.write("Pulse Rate:", Pulse_rate)
-        st.write("Temperature:", Temperature)
         
+      # Show the retrieved data in the form
+    st.write("Pulse Rate:", Pulse_rate)
+    st.write("Temperature:", Temperature)  
     Pulse_rate = float(Pulse_rate)
     Temperature = float(Temperature)
 

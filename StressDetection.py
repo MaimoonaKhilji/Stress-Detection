@@ -24,7 +24,7 @@ def fetch_thingspeak_data(channel_id, read_api_key, num_entries=1):
     except requests.exceptions.RequestException as e:
         print(f"Error occurred: {e}")
         return None
-@st.cache(allow_output_mutation=True)
+@st.cache_data(allow_output_mutation=True)
 def get():
     # Replace with your own ThingSpeak Channel ID and Read API Key
     channel_id = '2163528'

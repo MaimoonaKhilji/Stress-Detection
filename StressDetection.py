@@ -73,9 +73,10 @@ def main():
     if st.button("Get Data"):
         st.write("Loading for data...")
         time.sleep(2)
-    st.text("")
-    st.write("Pulse Rate:", Pulse_rate)
-    st.write("Temperature:", Temperature)  
+        st.text("")
+        st.write("Pulse Rate:", Pulse_rate)
+        st.write("Temperature:", Temperature)
+      
       
 
     if st.button("Stress Prediction"):

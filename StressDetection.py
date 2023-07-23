@@ -43,8 +43,10 @@ def main():
         prediction = int(prediction)
         if prediction==1:
             result="No Stress"
-            st.sidebar.empty()
-            st.info("No Stress Detected") 
+            st.sidebar.markdown("### Stay Happy")
+            st.sidebar.write("Stay Healthy")
+          #  st.sidebar.empty()
+           # st.info("No Stress Detected") 
         else:
             result="Stress Detected"
              # Create a sidebar for notes or additional content

@@ -55,6 +55,7 @@ def stress_prediction(input_data):
     return prediction[0][0]
 
 def main():
+    session_state = SessionState(pulse_rate=None, temperature=None)
     st.title("Stress Prediction")
 
    
@@ -65,22 +66,22 @@ def main():
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
-    
-    Pulse_rate = 0
-    Temperature = 0
+
+
     if st.button("Get Data"):
         entry = get()
-        Pulse_rate1 = entry['field1']
-        # Pulse_rate = float(Pulse_rate)
-        Temperature1 = entry['field2']
-        #Temperature = float(Temperature)
+        pulse_rate = entry['field1']
+        temperature = entry['field2']
+
+        # Save the retrieved values to SessionState
+        session_state.pulse_rate = float(pulse_rate)
+        session_state.temperature = float(temperature)
+
+    # Show the retrieved values from SessionState in the form
+    st.write("Pulse Rate:", session_state.pulse_rate)
+    st.write("Temperature:", session_state.temperature)
+
     
-        
-      # Show the retrieved data in the form
-    st.write("Pulse Rate:", Pulse_rate1)
-    st.write("Temperature:", Temperature1)  
-    Pulse_rate = float(Pulse_rate1)
-    Temperature = float(Temperature1)
 
     if st.button("Stress Prediction"):
         input_data = [Gender, Age, int(Temperature), int(Pulse_rate), Bmi]

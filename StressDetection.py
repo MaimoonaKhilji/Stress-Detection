@@ -28,7 +28,51 @@ def main():
 
     # Create a sidebar for notes or additional content
     st.sidebar.markdown("### Notes")
-    st.sidebar.write("Write your notes or additional content here.")
+    st.sidebar.write("Certainly! Here is a list of practices that can help relax stress:
+
+1. Deep Breathing: Practice deep breathing exercises to calm the nervous system and reduce stress levels. Take slow, deep breaths, hold briefly, and then exhale slowly.
+
+2. Meditation: Engage in mindfulness meditation to focus your mind on the present moment and let go of stressful thoughts.
+
+3. Progressive Muscle Relaxation: Tense and then relax each muscle group in your body, starting from your feet up to your head, to release physical tension.
+
+4. Yoga: Participate in yoga classes or follow guided yoga sessions to improve flexibility, relieve tension, and promote relaxation.
+
+5. Exercise: Regular physical activity, such as walking, jogging, or swimming, can help release endorphins and reduce stress.
+
+6. Spending Time in Nature: Take a walk in the park, hike, or simply spend time outdoors to connect with nature and promote a sense of calm.
+
+7. Journaling: Write down your thoughts, feelings, and worries in a journal to gain clarity and release emotional tension.
+
+8. Reading: Escape into a good book or engage in literature that interests you to take your mind off stressors.
+
+9. Creative Outlets: Engage in creative activities like drawing, painting, crafting, or playing a musical instrument to express yourself and unwind.
+
+10. Listening to Music: Listen to soothing music or your favorite tunes to relax and uplift your mood.
+
+11. Socializing: Spend quality time with friends and loved ones to share experiences and receive emotional support.
+
+12. Laughter: Watch a comedy show or engage in activities that make you laugh, as laughter can release endorphins and reduce stress.
+
+13. Aromatherapy: Use essential oils like lavender, chamomile, or eucalyptus to promote relaxation and reduce stress.
+
+14. Limiting Screen Time: Reduce exposure to screens (phones, computers, TVs) before bedtime to improve sleep quality and reduce stress.
+
+15. Mindful Eating: Pay attention to your meals, savoring each bite and eating healthy, balanced foods that nourish your body.
+
+16. Warm Baths: Take a warm bath with Epsom salts or essential oils to soothe your muscles and calm your mind.
+
+17. Visualization: Imagine yourself in a peaceful and serene place to evoke relaxation responses.
+
+18. Mindful Walking: Practice walking meditation, paying attention to each step and your surroundings.
+
+19. Disconnect: Take a break from technology and social media to reduce mental clutter and promote relaxation.
+
+20. Seek Professional Help: If stress becomes overwhelming or chronic, don't hesitate to seek support from a mental health professional or counselor.
+
+
+
+")
     st.sidebar.write("You can use Markdown syntax to format the content.")
 
     # Main content on the left side
@@ -39,9 +83,17 @@ def main():
     Pulse_rate = st.text_input("Pulse rate")
 
     if st.button("Stress Prediction"):
-        input_data = [Gender, Age, Bmi, Temperature, Pulse_rate]
+        input_data = [Gender, Age, Temperature, Pulse_rate, Bmi]
         prediction = stress_prediction(input_data)
-        st.success(f"Stress Level: {prediction}")
+        prediction = int(prediction)
+        if prediction==1:
+            result="No Stress"
+        else:
+            result="Stress Detected"
+            st.write("Stress Detected! Playing Calm Sound...")
+            calm_sound_path = 'Meydan-Freezing-but-warm.mp3'
+            st.audio(calm_sound_path, format='audio/mp3')
+        st.success(f"Stress Level: {result}")
 
     
 

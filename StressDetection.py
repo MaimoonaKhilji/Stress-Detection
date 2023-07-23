@@ -71,7 +71,8 @@ def main():
     if st.button("Get Data"):
         st.write("Pulse Rate:", Pulse_rate)
         st.write("Temperature:", Temperature)
-    
+    st.write("Pulse Rate:", Pulse_rate)
+    st.write("Temperature:", Temperature)
         
       
 

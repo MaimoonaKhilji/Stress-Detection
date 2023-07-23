@@ -22,7 +22,7 @@ from tensorflow.keras.layers import Dense
 #from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
 #from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
 #from scikeras.wrappers import KerasClassifier
-from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
+#from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
 
 df = pd.read_excel('data.xlsx')
 df

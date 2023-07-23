@@ -35,7 +35,11 @@ def main():
         input_data = [Gender, Age, Bmi, Temperature, Pulse_rate]
         prediction = stress_prediction(input_data)
         prediction = int(prediction)
-        st.success(f"Stress Level: {prediction}")
+        if prediction==1:
+            result="No Stress"
+        else:
+            result="Stress Detected"
+        st.success(f"Stress Level: {result}")
 
 if __name__ == '__main__':
     main()

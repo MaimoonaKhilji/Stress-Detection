@@ -34,6 +34,7 @@ def main():
     if st.button("Stress Prediction"):
         input_data = [Gender, Age, Bmi, Temperature, Pulse_rate]
         prediction = stress_prediction(input_data)
+        prediction = int(prediction)
         st.success(f"Stress Level: {prediction}")
 
 if __name__ == '__main__':

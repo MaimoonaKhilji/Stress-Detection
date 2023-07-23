@@ -132,8 +132,11 @@ def main():
             """)
                 
             st.write("Stress Detected! Playing Calm Sound...")
-            calm_sound_path = 'Meydan-Freezing-but-warm.mp3'
-            st.audio(calm_sound_path, format='audio/mp3')
+         #   calm_sound_path = 'Meydan-Freezing-but-warm.mp3'
+            st.audio('Meydan-Freezing-but-warm.mp3', format='audio/mp3')
+            st.audio('Moon-Dock.mp3', format='audio/mp3')
+            st.audio('scott-buckley-jul.mp3', format='audio/mp3')
+            st.audio('please-calm-my-mind-125566.mp3', format='audio/mp3')
         st.success(f"Stress Level: {result}")
 
     

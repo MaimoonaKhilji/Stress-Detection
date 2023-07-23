@@ -7,8 +7,8 @@ from tensorflow.keras.models import load_model
 def stress_prediction(input_data):
     loaded_model = load_model('NN_model.h5')
     input_data_as_numpy_array = np.asarray(input_data)
-    input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
-    prediction = loaded_model.predict(input_data_reshaped)
+   # input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
+    prediction = loaded_model.predict(input_data_as_numpy_array)
     return prediction[0][0]
 
 def main():

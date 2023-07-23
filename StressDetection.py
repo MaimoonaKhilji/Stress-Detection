@@ -24,7 +24,7 @@ def fetch_thingspeak_data(channel_id, read_api_key, num_entries=1):
     except requests.exceptions.RequestException as e:
         print(f"Error occurred: {e}")
         return None
-
+@st.cache(allow_output_mutation=True)
 def get():
     # Replace with your own ThingSpeak Channel ID and Read API Key
     channel_id = '2163528'
@@ -55,33 +55,31 @@ def stress_prediction(input_data):
     return prediction[0][0]
 
 def main():
-    session_state = SessionState(pulse_rate=None, temperature=None)
     st.title("Stress Prediction")
-
-   
-
   #  st.sidebar.write("You can use Markdown syntax to format the content.")
 
     # Main content on the left side
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
-
-
+    
+    Pulse_rate = 0
+    Temperature = 0
     if st.button("Get Data"):
         entry = get()
-        pulse_rate = entry['field1']
-        temperature = entry['field2']
-
-        # Save the retrieved values to SessionState
-        session_state.pulse_rate = float(pulse_rate)
-        session_state.temperature = float(temperature)
-
-    # Show the retrieved values from SessionState in the form
-    st.write("Pulse Rate:", session_state.pulse_rate)
-    st.write("Temperature:", session_state.temperature)
-
+        Pulse_rate1 = entry['field1']
+        # Pulse_rate = float(Pulse_rate)
+        Temperature1 = entry['field2']
+        #Temperature = float(Temperature)
     
+        
+      # Show the retrieved data in the form
+    st.write("Pulse Rate:", Pulse_rate1)
+    st.write("Temperature:", Temperature1)  
+    Pulse_rate = float(Pulse_rate1)
+    Temperature = float(Temperature1)
+    st.write("Pulse Rate:", Pulse_rate)
+    st.write("Temperature:", Temperature) 
 
     if st.button("Stress Prediction"):
         input_data = [Gender, Age, int(Temperature), int(Pulse_rate), Bmi]
@@ -142,13 +140,6 @@ def main():
             st.audio('scott-buckley-jul.mp3', format='audio/mp3')
             st.audio('please-calm-my-mind-125566.mp3', format='audio/mp3')
         st.success(f"Stress Level: {result}")
-
-    
-
-
-
-
-
 
 
 if __name__ == '__main__':

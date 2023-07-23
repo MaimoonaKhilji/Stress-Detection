@@ -25,37 +25,23 @@ def stress_prediction(input_data):
 
 def main():
     st.title("Stress Prediction")
-    
-    # Create two columns for layout
-    left_column, right_column = st.beta_columns(2)
 
-    with left_column:
-        Gender = st.text_input("Gender (0 for Male, 1 for Female)")
-        Age = st.text_input("Age")
-        Bmi = st.text_input("BMI")
-        Temperature = st.text_input("Temperature")
-        Pulse_rate = st.text_input("Pulse rate")
+    # Create a sidebar for notes or additional content
+    st.sidebar.markdown("### Notes")
+    st.sidebar.write("Write your notes or additional content here.")
+    st.sidebar.write("You can use Markdown syntax to format the content.")
 
-        if st.button("Stress Prediction"):
-            input_data = [Gender, Age, Bmi, Temperature, Pulse_rate]
-            prediction = stress_prediction(input_data)
-            prediction = int(prediction)
-            if prediction==1:
-                result="No Stress"
-            else:
-                result="Stress Detected"
-                st.write("Stress Detected! Playing Calm Sound...")
-                calm_sound_path = 'Meydan-Freezing-but-warm.mp3'
-    
-                st.audio(calm_sound_path, format='audio/mp3')
-            st.success(f"Stress Level: {result}")
+    # Main content on the left side
+    Gender = st.text_input("Gender (0 for Male, 1 for Female)")
+    Age = st.text_input("Age")
+    Bmi = st.text_input("BMI")
+    Temperature = st.text_input("Temperature")
+    Pulse_rate = st.text_input("Pulse rate")
 
-    with right_column:
-        # You can add notes or any additional content here
-        st.markdown("### Notes")
-        st.write("Write your notes or additional content here.")
-        st.write("You can use Markdown syntax to format the content.")
-    
+    if st.button("Stress Prediction"):
+        input_data = [Gender, Age, Bmi, Temperature, Pulse_rate]
+        prediction = stress_prediction(input_data)
+        st.success(f"Stress Level: {prediction}")
 
     
 

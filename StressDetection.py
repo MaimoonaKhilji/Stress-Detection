@@ -63,16 +63,17 @@ def main():
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
 
-    # Show the retrieved data in the form
-    if st.button("Get Data"):
-        st.write("Loading for data...")
-        time.sleep(2)
-    st.text("")
+    
     entry = get()
     Pulse_rate = entry['field1']
     Pulse_rate = float(Pulse_rate)
     Temperature = entry['field2']
     Temperature = float(Temperature)
+    # Show the retrieved data in the form
+    if st.button("Get Data"):
+        st.write("Loading for data...")
+        time.sleep(2)
+    st.text("")
     st.write("Pulse Rate:", Pulse_rate)
     st.write("Temperature:", Temperature)  
       

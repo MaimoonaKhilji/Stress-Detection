@@ -68,9 +68,9 @@ def main():
     if st.button("Get Data"):
         entry = get()
         pulse_rate = entry['field1']
-        Pulse_rate = float(pulse_rate)
+        Pulse_rate = int(pulse_rate)
         temperature = entry['field2']
-        Temperature = float(temperature)
+        Temperature = int(temperature)
 
         # Show the retrieved data in the form
         st.write("Pulse Rate:", Pulse_rate)

@@ -72,10 +72,12 @@ def main():
         entry = get()
         p = entry['field1']
         p = float(p)
-        global Pulse_rate = p
+        global Pulse_rate
+        Pulse_rate = p
         t = entry['field2']
         t = float(t)
-        global Temperature = t
+        global Temperature
+        Temperature = t
         st.write("Pulse Rate:", Pulse_rate)
         st.write("Temperature:", Temperature)
         

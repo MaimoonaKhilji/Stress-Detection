@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
-from tensorflow.keras.models import load_model
+import tensorflow as tf
 
 def stress_prediction(input_data):
-    loaded_model = load_model('NN_model.h5')
+    loaded_model = tf.keras.models.load_model('NN_model.h5')
     input_data_as_numpy_array = np.asarray(input_data)
     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
     prediction = loaded_model.predict(input_data_reshaped)
@@ -20,7 +20,7 @@ def main():
     Pulse_rate = st.text_input("Pulse rate")
 
     if st.button("Stress Prediction"):
-        input_data = [Gender, Age, Temperature, Pulse_rate,Bmi]
+        input_data = [Gender, Age, Temperature, Pulse_rate, Bmi]
         prediction = stress_prediction(input_data)
         st.success(f"Stress Level: {prediction}")
 

@@ -24,7 +24,7 @@ def fetch_thingspeak_data(channel_id, read_api_key, num_entries=1):
     except requests.exceptions.RequestException as e:
         print(f"Error occurred: {e}")
         return None
-@st.cache_data(allow_output_mutation=True)
+
 def get():
     # Replace with your own ThingSpeak Channel ID and Read API Key
     channel_id = '2163528'
@@ -62,23 +62,18 @@ def main():
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
-    
-    Pulse_rate = 0
-    Temperature = 0
+    entry = get()
+    Pulse_rate = entry['field1']
+    Pulse_rate = float(Pulse_rate)
+    Temperature = entry['field2']
+    Temperature = float(Temperature)
+    # Show the retrieved data in the form
     if st.button("Get Data"):
-        entry = get()
-        Pulse_rate = entry['field1']
-        # Pulse_rate = float(Pulse_rate)
-        Temperature = entry['field2']
-        #Temperature = float(Temperature)
+        st.write("Pulse Rate:", Pulse_rate)
+        st.write("Temperature:", Temperature)
     
         
-      # Show the retrieved data in the form
-    
-    Pulse_rate = float(Pulse_rate)
-    Temperature = float(Temperature)
-    st.write("Pulse Rate:", Pulse_rate)
-    st.write("Temperature:", Temperature) 
+      
 
     if st.button("Stress Prediction"):
         input_data = [Gender, Age, int(Temperature), int(Pulse_rate), Bmi]

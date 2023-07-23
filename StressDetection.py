@@ -39,6 +39,13 @@ def main():
             result="No Stress"
         else:
             result="Stress Detected"
+            st.write("Stress Detected! Playing Calm Sound...")
+
+ 
+
+            calm_sound_path = 'Meydan-Freezing-but-warm.mp3'
+
+            st.audio(calm_sound_path, format='audio/mp3')
         st.success(f"Stress Level: {result}")
 
 if __name__ == '__main__':

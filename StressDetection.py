@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 import tensorflow as tf
-
+import time
 import requests
 
 def fetch_thingspeak_data(channel_id, read_api_key, num_entries=1):
@@ -62,15 +62,16 @@ def main():
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
+   
+    # Show the retrieved data in the form
+    if st.button("Get Data"):
+        st.write("Loading for data...")
+        time.sleep(5)
     entry = get()
     Pulse_rate = entry['field1']
     Pulse_rate = float(Pulse_rate)
     Temperature = entry['field2']
     Temperature = float(Temperature)
-    # Show the retrieved data in the form
-    if st.button("Get Data"):
-        st.write("Pulse Rate:", Pulse_rate)
-        st.write("Temperature:", Temperature)
     st.write("Pulse Rate:", Pulse_rate)
     st.write("Temperature:", Temperature)
         

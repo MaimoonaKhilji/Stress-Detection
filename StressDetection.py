@@ -68,9 +68,9 @@ def main():
     if st.button("Get Data"):
         entry = get()
         pulse_rate = entry['field1']
-        Pulse_rate = int(pulse_rate)
+        Pulse_rate = float(pulse_rate)
         temperature = entry['field2']
-        Temperature = int(temperature)
+        Temperature = float(temperature)
 
         # Show the retrieved data in the form
         st.write("Pulse Rate:", Pulse_rate)
@@ -85,7 +85,7 @@ def main():
   #  Temperature = float(temperature)
 
     if st.button("Stress Prediction"):
-        input_data = [Gender, Age, Temperature, Pulse_rate, Bmi]
+        input_data = [Gender, Age, int(Temperature), int(Pulse_rate), Bmi]
         prediction = stress_prediction(input_data)
         prediction = int(prediction)
         if prediction==0:

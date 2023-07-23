@@ -4,6 +4,37 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 import tensorflow as tf
 
+import requests
+
+def fetch_thingspeak_data(channel_id, read_api_key, num_entries=1):
+    url = f"https://api.thingspeak.com/channels/{channel_id}/feeds.json"
+    params = {
+        "api_key": read_api_key,
+        "results": num_entries
+    }
+
+    try:
+        response = requests.get(url, params=params)
+        if response.status_code == 200:
+            data = response.json()
+            return data['feeds']
+        else:
+            print(f"Failed to fetch data. Status code: {response.status_code}")
+            return None
+    except requests.exceptions.RequestException as e:
+        print(f"Error occurred: {e}")
+        return None
+
+def get():
+    # Replace with your own ThingSpeak Channel ID and Read API Key
+    channel_id = '2163528'
+    read_api_key = "3QP7OZ4X07IWX53K"
+    num_entries = 1  # Fetching only the last entry
+
+    data = fetch_thingspeak_data(channel_id, read_api_key, num_entries)
+    entry = data[0]  # Access the first (and only) entry in the list
+    return entry
+
 # Define the deep learning model architecture
 def create_model():
     model = tf.keras.Sequential()
@@ -34,8 +65,13 @@ def main():
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
-    Temperature = st.text_input("Temperature")
-    Pulse_rate = st.text_input("Pulse rate")
+    #Temperature = st.text_input("Temperature")
+    #Pulse_rate = st.text_input("Pulse rate")
+    entry= get()
+    pulse_rate = entry['field1']
+    Pulse_rate = float(pulse_rate)
+    temperature = entry['field2']
+    Temperature = float(temperature)
 
     if st.button("Stress Prediction"):
         input_data = [Gender, Age, Temperature, Pulse_rate, Bmi]
@@ -95,6 +131,12 @@ def main():
         st.success(f"Stress Level: {result}")
 
     
+
+
+
+
+
+
 
 if __name__ == '__main__':
     main()

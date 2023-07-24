@@ -64,6 +64,7 @@ def main():
     Bmi = st.text_input("BMI")
     
     Pulse_rate =0
+    Temperature=0
     p_list = []
     t_list = []
     # Show the retrieved data in the form
@@ -92,7 +93,7 @@ def main():
     #Temperature = entry['field2']
     #Temperature = float(Temperature)
 
-    if len(p_list>0):
+    if len(p_list)>0:
         Pulse_rate=p_list[-1]
         Temperature=t_list[-1]
     if st.button("Stress Prediction"):

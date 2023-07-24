@@ -62,27 +62,27 @@ def main():
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
-
+    p_list = []
+    t_list = []
     # Show the retrieved data in the form
     if st.button("Get Data"):
         st.write("Loading for data...")
         time.sleep(2)
         st.text("")
         
-    entries = get()
-    i=0
-    p_list = []
-    t_list = []
-    while i <10:
-        entry = entries[i]
-        Pulse_rate = float(entry['field1'])
-        p_list.append(Pulse_rate)
-        Temperature = float(entry['field2'])
-        t_list.append(Temperature)
-        i = i+1
+        entries = get()
+        i=0
         
-        st.write("Pulse Rate:", Pulse_rate)
-        st.write("Temperature:", Temperature)  
+        while i <10:
+            entry = entries[i]
+            Pulse_rate = float(entry['field1'])
+            p_list.append(Pulse_rate)
+            Temperature = float(entry['field2'])
+            t_list.append(Temperature)
+            i = i+1
+            
+            st.write("Pulse Rate:", Pulse_rate)
+            st.write("Temperature:", Temperature)  
         
     #entry = get()
     #Pulse_rate = entry['field1']

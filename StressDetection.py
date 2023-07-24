@@ -98,7 +98,7 @@ def main():
         Temperature=t_list[-1]
     if st.button("Stress Prediction"):
         st.text("")
-        st.write("Pulse Rate:", Pulse_rate)
+        st.write("Pulse Rate:", p_list[-1])
         st.write("Temperature:", Temperature)
         input_data = [Gender, Age, int(Temperature), int(Pulse_rate), Bmi]
         prediction = stress_prediction(input_data)

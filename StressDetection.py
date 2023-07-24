@@ -5,7 +5,8 @@ from sklearn.preprocessing import StandardScaler
 import tensorflow as tf
 import time
 import requests
-
+Pulse_rate =0
+Temperature=0
 def fetch_thingspeak_data(channel_id, read_api_key, num_entries=1):
     url = f"https://api.thingspeak.com/channels/{channel_id}/feeds.json"
     params = {
@@ -63,8 +64,7 @@ def main():
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
     
-    Pulse_rate =0
-    Temperature=0
+   
     p_list = []
     t_list = []
     # Show the retrieved data in the form
@@ -98,7 +98,7 @@ def main():
         Temperature=t_list[-1]
     if st.button("Stress Prediction"):
         st.text("")
-        st.write("Pulse Rate:", p_list[-1])
+        st.write("Pulse Rate:", Pulse_rate)
         st.write("Temperature:", Temperature)
         input_data = [Gender, Age, int(Temperature), int(Pulse_rate), Bmi]
         prediction = stress_prediction(input_data)

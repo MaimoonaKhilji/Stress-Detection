@@ -86,7 +86,7 @@ def main():
         input_data = [Gender, Age, int(Temperature), int(Pulse_rate), Bmi]
         prediction = stress_prediction(input_data)
         prediction = int(prediction)
-        if prediction==0:
+        if prediction==1:
             result="No Stress"
             st.sidebar.markdown("### Stay Happy")
             st.sidebar.write("Stay Healthy")

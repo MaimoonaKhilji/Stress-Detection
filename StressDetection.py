@@ -57,11 +57,7 @@ def stress_prediction(input_data):
 
 def main():
     st.title("Stress Prediction")
-    # Add the CSS file to the app
-    with open("custom.css", "r") as f:
-        css = f.read()
-        st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
-
+   
     # Change the sidebar color
     st.sidebar.markdown("""
         <style>

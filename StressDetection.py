@@ -74,10 +74,10 @@ def main():
     t_list = []
     while i <10:
       entry = entries[i]
-      pulse_rate = float(entry['field1'])
-      p_list.append(pulse_rate)
-      temperature = float(entry['field2'])
-      t_list.append(temperature)
+      Pulse_rate = float(entry['field1'])
+      p_list.append(Pulse_rate)
+      Temperature = float(entry['field2'])
+      t_list.append(Temperature)
       i = i+1
     #entry = get()
     #Pulse_rate = entry['field1']

@@ -128,10 +128,11 @@ def main():
            # st.info("No Stress Detected") 
         else:
             result="Stress Detected"
-            recommendation()
+            
             
         st.success(f"Stress Level: {result}")
-
+    if prediction==1:
+        recommendation()
 
 if __name__ == '__main__':
     st.markdown('<link href="custom.css" rel="stylesheet">', unsafe_allow_html=True)

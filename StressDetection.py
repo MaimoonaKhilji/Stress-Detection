@@ -29,11 +29,10 @@ def get():
     # Replace with your own ThingSpeak Channel ID and Read API Key
     channel_id = '2163528'
     read_api_key = "3QP7OZ4X07IWX53K"
-    num_entries = 1  # Fetching only the last entry
+    num_entries = 10  # Fetching the last 10 entries
 
     data = fetch_thingspeak_data(channel_id, read_api_key, num_entries)
-    entry = data[0]  # Access the first (and only) entry in the list
-    return entry
+    return data
 
 # Define the deep learning model architecture
 def create_model():
@@ -63,19 +62,30 @@ def main():
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
 
-    
-    entry = get()
-    Pulse_rate = entry['field1']
-    Pulse_rate = float(Pulse_rate)
-    Temperature = entry['field2']
-    Temperature = float(Temperature)
     # Show the retrieved data in the form
     if st.button("Get Data"):
         st.write("Loading for data...")
         time.sleep(2)
         st.text("")
-        st.write("Pulse Rate:", Pulse_rate)
-        st.write("Temperature:", Temperature)
+        
+    entries = get()
+    i=0
+    p_list = []
+    t_list = []
+    while i <10:
+      entry = entries[i]
+      pulse_rate = float(entry['field1'])
+      p_list.append(pulse_rate)
+      temperature = float(entry['field2'])
+      t_list.append(temperature)
+      i = i+1
+    #entry = get()
+    #Pulse_rate = entry['field1']
+    #Pulse_rate = float(Pulse_rate)
+    #Temperature = entry['field2']
+    #Temperature = float(Temperature)
+    st.write("Pulse Rate:", Pulse_rate)
+    st.write("Temperature:", Temperature)
       
       
 

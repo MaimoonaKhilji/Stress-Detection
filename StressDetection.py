@@ -6,6 +6,17 @@ import tensorflow as tf
 import time
 import requests
 
+# Set custom theme using the Theming API
+st.set_page_config(
+    page_title="Stress Prediction",
+    page_icon=":sunglasses:",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    theme="purple",  # You can specify "light" or "dark" for default themes, or use custom CSS styles.
+    # Specify the color of the sidebar using the primaryColor parameter.
+    primaryColor="#ff5722"  # Replace this with the desired color in HEX format.
+)
+
 def fetch_thingspeak_data(channel_id, read_api_key, num_entries=1):
     url = f"https://api.thingspeak.com/channels/{channel_id}/feeds.json"
     params = {
@@ -86,7 +97,7 @@ def main():
         input_data = [Gender, Age, int(Temperature), int(Pulse_rate), Bmi]
         prediction = stress_prediction(input_data)
         prediction = int(prediction)
-        if prediction==1:
+        if prediction==0:
             result="No Stress"
             st.sidebar.markdown("### Stay Happy")
             st.sidebar.write("Stay Healthy")

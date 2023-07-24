@@ -6,14 +6,6 @@ import tensorflow as tf
 import time
 import requests
 
-st.set_page_config(
-    page_title="Stress Prediction",
-    page_icon=":sunglasses:",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    theme="purple",  # Replace this with the desired theme name or custom CSS styles.
-    primaryColor="#ff5722"  # Replace this with the desired color in HEX format.
-)
 
 def fetch_thingspeak_data(channel_id, read_api_key, num_entries=1):
     url = f"https://api.thingspeak.com/channels/{channel_id}/feeds.json"
@@ -65,7 +57,21 @@ def stress_prediction(input_data):
 
 def main():
     st.title("Stress Prediction")
-  #  st.sidebar.write("You can use Markdown syntax to format the content.")
+    # Add the CSS file to the app
+    with open("custom.css", "r") as f:
+        css = f.read()
+        st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+
+    # Change the sidebar color
+    st.sidebar.markdown("""
+        <style>
+            .sidebar {
+                background-color: #000000;
+                color: #ffffff;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
 
     # Main content on the left side
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")

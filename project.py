@@ -61,6 +61,8 @@ def handle_rerun():
 
 # Streamlit app
 def main():
+    st.markdown('<link href="custom.css" rel="stylesheet">', unsafe_allow_html=True)
+
     st.title('Stress Prediction using LSTM')
 
     # Get or initialize session state

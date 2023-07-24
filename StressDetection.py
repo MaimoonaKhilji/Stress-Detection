@@ -5,8 +5,7 @@ from sklearn.preprocessing import StandardScaler
 import tensorflow as tf
 import time
 import requests
-Pulse_rate =0
-Temperature=0
+
 def fetch_thingspeak_data(channel_id, read_api_key, num_entries=1):
     url = f"https://api.thingspeak.com/channels/{channel_id}/feeds.json"
     params = {
@@ -30,10 +29,11 @@ def get():
     # Replace with your own ThingSpeak Channel ID and Read API Key
     channel_id = '2163528'
     read_api_key = "3QP7OZ4X07IWX53K"
-    num_entries = 10  # Fetching the last 10 entries
+    num_entries = 1  # Fetching only the last entry
 
     data = fetch_thingspeak_data(channel_id, read_api_key, num_entries)
-    return data
+    entry = data[0]  # Access the first (and only) entry in the list
+    return entry
 
 # Define the deep learning model architecture
 def create_model():
@@ -48,8 +48,7 @@ def stress_prediction(input_data):
     # Load the model using the custom architecture function
     model = create_model()
     model.load_weights('NN_model.h5')
-    #model.load_weights('trained__model.h5')
-    
+
     input_data_as_numpy_array = np.asarray(input_data, dtype=float)
     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
     prediction = model.predict(input_data_reshaped)
@@ -63,39 +62,23 @@ def main():
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
+
     
-   
-    p_list = []
-    t_list = []
+    entry = get()
+    Pulse_rate = entry['field1']
+    Pulse_rate = float(Pulse_rate)
+    Temperature = entry['field2']
+    Temperature = float(Temperature)
     # Show the retrieved data in the form
     if st.button("Get Data"):
         st.write("Loading for data...")
         time.sleep(2)
         st.text("")
-        
-        entries = get()
-        i=0
-        
-        while i <10:
-            entry = entries[i]
-            Pulse_rate = float(entry['field1'])
-            p_list.append(Pulse_rate)
-            Temperature = float(entry['field2'])
-            t_list.append(Temperature)
-            i = i+1
-            
-            st.write("Pulse Rate:", Pulse_rate)
-            st.write("Temperature:", Temperature)  
-    st.write("Pulse Rate:", p_list) 
-    #entry = get()
-    #Pulse_rate = entry['field1']
-    #Pulse_rate = float(Pulse_rate)
-    #Temperature = entry['field2']
-    #Temperature = float(Temperature)
+        st.write("Pulse Rate:", Pulse_rate)
+        st.write("Temperature:", Temperature)
+      
+      
 
-    if len(p_list)>0:
-        Pulse_rate=p_list[-1]
-        Temperature=t_list[-1]
     if st.button("Stress Prediction"):
         st.text("")
         st.write("Pulse Rate:", Pulse_rate)
@@ -144,7 +127,7 @@ def main():
             
             - Visualization: Imagine yourself in a peaceful and serene place to evoke relaxation responses.
             
-            - Mindful Walking: Practice walking meditation, paying attention to each step and your surroundings.
+            - Mindful Walking: Practice walking meditation, paying attention to eachSl step and your surroundings.
             
             - Disconnect: Take a break from technology and social media to reduce mental clutter and promote relaxation.
             

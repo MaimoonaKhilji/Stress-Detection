@@ -1,10 +1,11 @@
-import streamlit as st
+import requests
 
-# Add the CSS file to the app
-with open("custom.css", "r") as f:
-    css = f.read()
-    st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+def get_google_theme_color():
+  """Gets the theme color of Google."""
+  response = requests.get("https://www.google.com/")
+  theme_color = response.headers["theme-color"]
+  return theme_color
 
-# Use the CSS styles in the app
-st.title("My Beautiful App")
-st.write("This is a beautiful app.")
+theme_color = get_google_theme_color()
+
+print(theme_color)

@@ -62,6 +62,8 @@ def main():
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")
     Age = st.text_input("Age")
     Bmi = st.text_input("BMI")
+    
+    Pulse_rate =0
     p_list = []
     t_list = []
     # Show the retrieved data in the form
@@ -83,7 +85,7 @@ def main():
             
             st.write("Pulse Rate:", Pulse_rate)
             st.write("Temperature:", Temperature)  
-        
+    st.write("Pulse Rate:", p_list) 
     #entry = get()
     #Pulse_rate = entry['field1']
     #Pulse_rate = float(Pulse_rate)

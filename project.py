@@ -40,7 +40,7 @@ scaler = StandardScaler()
 scaler.fit(X.reshape(-1, X.shape[-1]))
 
 # Load the trained LSTM model (replace 'path_to_your_trained_model' with the actual path to your model)
-model = tf.keras.models.load_model('trained_model.sav')
+model = tf.keras.models.load_model('trained_model.h5')
 
 # Streamlit app
 def get_session_state():

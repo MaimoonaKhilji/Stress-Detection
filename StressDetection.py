@@ -94,9 +94,8 @@ def main():
            # st.info("No Stress Detected") 
         else:
             result="Stress Detected"
-
-             if st.button("Practices to Relax Stress"):
-                 # Create a sidebar for notes or additional content
+            if st.button("Practices to Relax Stress"):
+                # Create a sidebar for notes or additional content
                 st.sidebar.markdown("### Practices to Relax Stress")
                 st.sidebar.write("""
                 - Deep Breathing: Practice deep breathing exercises to calm the nervous system and reduce stress levels. Take slow, deep breaths, hold briefly, and then exhale slowly.

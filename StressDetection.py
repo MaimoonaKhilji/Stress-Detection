@@ -57,17 +57,6 @@ def stress_prediction(input_data):
 
 def main():
     st.title("Stress Prediction")
-   
-    # Change the sidebar color
-    st.sidebar.markdown("""
-        <style>
-            .sidebar {
-                background-color: #000000;
-                color: #ffffff;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
 
     # Main content on the left side
     Gender = st.text_input("Gender (0 for Male, 1 for Female)")

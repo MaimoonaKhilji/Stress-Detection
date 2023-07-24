@@ -144,6 +144,6 @@ def main():
 
 
 if __name__ == '__main__':
-    st.markdown('<link href="styles.css" rel="stylesheet">', unsafe_allow_html=True)
+    st.markdown('<link href="custom.css" rel="stylesheet">', unsafe_allow_html=True)
     
     main()

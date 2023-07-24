@@ -92,8 +92,8 @@ def main():
     #Temperature = entry['field2']
     #Temperature = float(Temperature)
       
-      
-
+    Pulse_rate=p_list[-1]
+    Temperature=t_list[-1]
     if st.button("Stress Prediction"):
         st.text("")
         st.write("Pulse Rate:", Pulse_rate)

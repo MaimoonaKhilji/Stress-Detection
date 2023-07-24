@@ -46,8 +46,8 @@ def create_model():
 def stress_prediction(input_data):
     # Load the model using the custom architecture function
     model = create_model()
-    #model.load_weights('NN_model.h5')
-    model.load_weights('trained__model.h5')
+    model.load_weights('NN_model.h5')
+    #model.load_weights('trained__model.h5')
     
     input_data_as_numpy_array = np.asarray(input_data, dtype=float)
     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)

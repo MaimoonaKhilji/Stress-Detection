@@ -6,14 +6,12 @@ import tensorflow as tf
 import time
 import requests
 
-# Set custom theme using the Theming API
 st.set_page_config(
     page_title="Stress Prediction",
     page_icon=":sunglasses:",
     layout="wide",
     initial_sidebar_state="expanded",
-    theme="purple",  # You can specify "light" or "dark" for default themes, or use custom CSS styles.
-    # Specify the color of the sidebar using the primaryColor parameter.
+    theme="purple",  # Replace this with the desired theme name or custom CSS styles.
     primaryColor="#ff5722"  # Replace this with the desired color in HEX format.
 )
 

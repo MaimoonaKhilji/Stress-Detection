@@ -46,8 +46,9 @@ def create_model():
 def stress_prediction(input_data):
     # Load the model using the custom architecture function
     model = create_model()
-    model.load_weights('NN_model.h5')
-
+    #model.load_weights('NN_model.h5')
+    model.load_weights('trained__model.h5')
+    
     input_data_as_numpy_array = np.asarray(input_data, dtype=float)
     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
     prediction = model.predict(input_data_reshaped)
@@ -73,19 +74,21 @@ def main():
     p_list = []
     t_list = []
     while i <10:
-      entry = entries[i]
-      Pulse_rate = float(entry['field1'])
-      p_list.append(Pulse_rate)
-      Temperature = float(entry['field2'])
-      t_list.append(Temperature)
-      i = i+1
+        entry = entries[i]
+        Pulse_rate = float(entry['field1'])
+        p_list.append(Pulse_rate)
+        Temperature = float(entry['field2'])
+        t_list.append(Temperature)
+        i = i+1
+        
+        st.write("Pulse Rate:", Pulse_rate)
+        st.write("Temperature:", Temperature)  
+        
     #entry = get()
     #Pulse_rate = entry['field1']
     #Pulse_rate = float(Pulse_rate)
     #Temperature = entry['field2']
     #Temperature = float(Temperature)
-    st.write("Pulse Rate:", Pulse_rate)
-    st.write("Temperature:", Temperature)
       
       
 
